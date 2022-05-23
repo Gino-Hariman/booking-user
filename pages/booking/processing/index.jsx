@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import ProcessingImage from '@/public/images/processing.png';
+// import ProcessingImage from '@/public/images/processing.png';
 import { Button } from '@/components/Buttons';
 import PageLayout from '@/layout/PageLayout';
 import { useRouter } from 'next/router';
@@ -14,14 +14,14 @@ const BookingProcessing = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="mt-20 w-[340px] h-[340px]">
-        <Image
-          // className="mt-20"
-          src={ProcessingImage}
+        <img
+          style={{ objectFit: 'cover' }}
+          className="w-[340px] h-[340px] mt-20"
+          src={'/images/processing.png'}
           alt="processing image"
-          width={340}
-          height={340}
-          quality={100}
-          objectFit="responsive"
+          // width={340}
+          // height={340}
+          // objectFit="responsive"
         />
       </div>
       <div className="my-16 flex flex-col items-center justify-center text-black">

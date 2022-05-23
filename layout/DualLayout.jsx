@@ -1,6 +1,5 @@
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const DualLayout = ({ children }) => {
@@ -13,12 +12,11 @@ const DualLayout = ({ children }) => {
         <div className="space-y-8 hidden lg:inline-block w-6/12">
           <Breadcrumbs />
           <div className="relative h-[calc(100vh_-_56px_-_56px_-_32px_-_32px)]">
-            <Image
+            <img
+              style={{ objectFit: 'cover' }}
               className="relative rounded-r-4 overflow-hidden"
               src={router.query.image}
               alt="Picture of the author"
-              objectFit="cover"
-              layout="fill"
             />
           </div>
         </div>

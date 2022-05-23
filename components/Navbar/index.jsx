@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '@/public/logo.png';
 import { useAuth } from '@/context/AuthenticationContext';
 import { useRouter } from 'next/router';
 import { Button } from '../Buttons';
@@ -20,7 +19,7 @@ const Navbar = () => {
         <div className="max-w-[90%] w-full self-center ml-8">
           <Link href="/" passHref>
             <a>
-              <Image src={logo} objectFit="fill" />
+              <img src={'/logo.png'} style={{ objectFit: 'contain' }} />
             </a>
           </Link>
         </div>
@@ -29,7 +28,7 @@ const Navbar = () => {
           <div className="max-w-[80%] w-full self-center ml-8">
             <Link href="/" passHref>
               <a>
-                <Image src={logo} objectFit="fill" />
+                <img src={'/logo.png'} style={{ objectFit: 'contain' }} />
               </a>
             </Link>
           </div>

@@ -7,12 +7,11 @@ const AuthLayout = ({ children }) => {
       <Navbar />
       <div className="mt-nav flex items-center relative h-[calc(100vh_-_76px)] bg-shade-BG">
         <div className="relative h-[calc(100%_-_56px_-_56px)] w-6/12">
-          <Image
+          <img
+            style={{ objectFit: 'cover' }}
             className="relative rounded-r-4 overflow-hidden"
-            src={'https://source.unsplash.com/random/?city,night'}
+            src={'/images/login.png'}
             alt="Picture of the author"
-            objectFit="cover"
-            layout="fill"
           />
         </div>
         <div className="flex w-6/12">{children}</div>

@@ -1,9 +1,13 @@
 import { dateFormat } from '@/utils/dateTimeConfig';
 import dayjs from 'dayjs';
-import React, { useState, useEffect } from 'react';
-import { DayPickerSingleDateController } from 'react-dates';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
+import React, { useState, useEffect, useRef } from 'react';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+// import 'react-dates/initialize';
+// import 'react-dates/lib/css/_datepicker.css';
+// import 'pikaday/css/pikaday.css';
+// import dynamic from 'next/dynamic';
+// const Pikaday = dynamic(() => import('pikaday'));
 
 // const disabledDate = () => {
 //   if (new Date().getHours() >= 15)
@@ -18,38 +22,53 @@ import 'react-dates/lib/css/_datepicker.css';
 
 const DatePicker = ({ onChange }) => {
   const [selectedDate, setSelectedDate] = useState(dayjs().add(1, 'day'));
+  const inputRef = useRef();
   const [focused, setFocused] = React.useState();
   useEffect(() => {
-    onChange(dayjs(selectedDate).format(dateFormat));
+    // onChange(dayjs(selectedDate).format(dateFormat));
   }, [selectedDate]);
 
-  console.log('abc', dayjs().format('HH'));
-
-  const disabledDate = () => {
-    const NOW = dayjs().format('HH');
-
-    return dayjs().add(1, 'days');
+  const onValueChange = (val) => {
+    setSelectedDate(val);
+    // console.log('value', val);
+    onChange(dayjs(val).format(dateFormat));
   };
 
+  const disabledDate = () => {
+    if (new Date().getHours() >= 15)
+      return [
+        {
+          from: new Date('2000', '01', '01'),
+          to: new Date(),
+        },
+      ];
+
+    return [
+      {
+        from: new Date('2000', '01', '01'),
+        to: dayjs().subtract(1, 'day').toDate(),
+      },
+    ];
+  };
+  // useEffect(() => {
+  //   console.log(inputRef, window);
+  //   if (inputRef.current) {
+  //     const pikaday = new Pikaday({
+  //       field: inputRef.current,
+  //       container: document.getElementById('datePickerContainer'),
+  //     });
+  //     // pikaday.show();
+  //   }
+  // }, []);
   // console.log('date', dayjs(selectedDate).format(dateFormat));
 
   return (
-    <DayPickerSingleDateController
-      // keepOpenOnDateSelect
-      // orientation="vertical"
-      // autoFocus
-      // withFullScreenPortal
-      // numberOfMonths={1}
-
-      // hideKeyboardShortcutsPanel
-      date={selectedDate}
-      onDateChange={(date) => setSelectedDate(date)}
-      focused={focused}
-      onFocusChange={({ focused }) => setFocused(focused)}
-      id="date"
-      // isDayBlocked={disabledDate}
-      // numberOfMonths={1}
-      // minDate={disabledDate }}
+    <DayPicker
+      mode="single"
+      disabled={disabledDate()}
+      selected={selectedDate}
+      onSelect={onValueChange}
+      onChange={onValueChange}
     />
   );
 };
