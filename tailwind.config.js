@@ -136,7 +136,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fit, minmax(318px, 1fr))',
-        'time-chip': 'repeat(2, minmax(343px, 343px))',
+        'time-chip': 'repeat(2, minmax(1fr, 343px))',
       },
       gridAutoRows: {
         'auto-fill': 'minmax(142px,1fr)',

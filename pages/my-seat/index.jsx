@@ -8,20 +8,10 @@ import axios from 'axios';
 export const getServerSideProps = async ({ req, query }) => {
   // const email = req.cookies.email;
   const token = req.cookies.token;
-  const nim = req.cookies.nim;
-
-  if (!Boolean(nim)) {
-    return {
-      redirect: {
-        destination: '/auth/register',
-        permanent: false,
-      },
-    };
-  }
 
   const data = await axios
     .get(
-      `${process.env.NEXT_PUBLIC_MAIN_HOST}/book/filtered?nim=${nim}&status=pending&page=0`,
+      `${process.env.NEXT_PUBLIC_MAIN_HOST}/book/filtered?status=pending&page=0`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }

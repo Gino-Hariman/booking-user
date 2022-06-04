@@ -12,19 +12,17 @@ const BookingProcessing = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="mt-20 w-[340px] h-[340px]">
-        <img
-          style={{ objectFit: 'cover' }}
-          className="w-[340px] h-[340px] mt-20"
-          src={'/images/processing.png'}
-          alt="processing image"
-          // width={340}
-          // height={340}
-          // objectFit="responsive"
-        />
-      </div>
-      <div className="my-16 flex flex-col items-center justify-center text-black">
+    <div className="flex h-full flex-col py-nav items-center">
+      <img
+        // style={{ objectFit: 'cover' }}
+        className="w-full h-full max-w-[340px] max-h-[340px]"
+        src={'/images/processing.png'}
+        alt="processing image"
+        // width={340}
+        // height={340}
+        // objectFit="responsive"
+      />
+      <div className="md:my-16 flex flex-col items-center justify-center text-black">
         <h1 className="mb-3  text-xxl-1 font-bold text-primary-500">
           Your Booking is on Processing
         </h1>

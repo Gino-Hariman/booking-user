@@ -5,7 +5,7 @@ const AuthLayout = ({ children }) => {
   return (
     <div className="relative">
       <Navbar />
-      <div className="mt-nav flex items-center relative h-[calc(100vh_-_76px)] bg-shade-BG">
+      <div className="mt-nav flex items-center relative h-[calc(100vh_-_76px)] bg-shade-BG ">
         <div className="relative h-[calc(100%_-_56px_-_56px)] w-6/12">
           <img
             style={{ objectFit: 'cover' }}
@@ -14,7 +14,9 @@ const AuthLayout = ({ children }) => {
             alt="Picture of the author"
           />
         </div>
-        <div className="flex w-6/12">{children}</div>
+        <div className="flex w-6/12 items-center justify-center">
+          {children}
+        </div>
       </div>
     </div>
   );

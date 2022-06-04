@@ -8,23 +8,31 @@ const TextInput = ({
   label,
   register = () => {},
   errors,
+  getValues,
+  isDisabled = false,
 }) => {
   const isError = errors && errors[name];
 
   const r = register(name);
 
   return (
-    <div key={name} className="mt-5">
+    <div key={name} className="mt-5 w-full">
       <label className="label" for={name}>
         {label}
       </label>
 
       <input
-        className={classNames(isError && 'error-input', 'input')}
+        readOnly={isDisabled}
+        disabled={isDisabled}
+        className={classNames(
+          isError && 'error-input',
+          'input disabled:text-gray-600'
+        )}
         id={name}
         type={inputType}
         placeholder={placeholder}
-        // value={input}
+        defaultValue={getValues(name)}
+        // value={getValues(name)}
         name={r?.name}
         onBlur={r?.onBlur}
         onChange={r?.onChange}

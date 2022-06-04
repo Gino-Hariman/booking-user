@@ -13,6 +13,7 @@ const LoginForm = () => {
   const router = useRouter();
   const {
     register,
+    getValues,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -46,7 +47,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="flex flex-col">
+    <form className="flex w-3/5 flex-col">
       <DataForm
         forms={[
           {
@@ -56,6 +57,7 @@ const LoginForm = () => {
             type: 'TextInput',
           },
         ]}
+        getValues={getValues}
         register={register}
         errors={errors}
       />

@@ -10,7 +10,7 @@ const ActionForm = ({
 }) => {
   return (
     <Content title={title}>
-      <div className="my-11">{form}</div>
+      <div className="flex items-center justify-center my-11">{form}</div>
       <Button
         title={actionName}
         isDisabled={submitDisabled}

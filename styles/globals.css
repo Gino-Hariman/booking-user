@@ -29,7 +29,7 @@ a {
     @apply text-gray-600 text-md-2 mb-2 font-medium;
   }
   .input {
-    @apply w-full py-4 px-6 rounded-full border outline-none focus:border-gray-500 shadow-inner disabled:border-shade-BD placeholder:text-shade-BD;
+    @apply w-full py-4 px-6 rounded-full border outline-none  focus:border-gray-500 shadow-inner disabled:border-shade-BD placeholder:text-shade-BD;
   }
   .error-input {
     @apply border-danger-500;

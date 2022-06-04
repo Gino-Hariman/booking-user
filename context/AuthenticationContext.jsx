@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
         if (res.type === 'error') return notify('error', res.message);
         Cookies.set('email', res['email']);
         Cookies.set('token', res.loginToken);
-        Cookies.set('nim', res.nim);
+        // Cookies.set('nim', res.nim);
         setIsAuthenticated(true);
 
         instance.defaults.headers.Authorization = `Bearer ${res.loginToken}`;

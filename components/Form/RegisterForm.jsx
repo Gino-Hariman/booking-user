@@ -17,6 +17,7 @@ const RegisterForm = () => {
   const {
     setValue,
     register,
+    getValues,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -35,18 +36,22 @@ const RegisterForm = () => {
       id_program: null,
     },
   });
-  console.log('errors', errors);
+
   const onSubmit = (data) => {
     console.log('data regis', data);
     mutation.mutate(
       { ...data, email: Cookies.get('email') },
       {
         onSuccess: (res) => {
-          console.log('res', res);
-          Cookies.set('nim', data.nim);
-          notify('success', 'Register Success!');
+          // notify('success', 'Register Success!');
 
-          router.replace('/');
+          if (res.type === 'error') return notify('error', res.message);
+
+          if (res.type === 'success') {
+            notify('success', 'Register Success!');
+            Cookies.set('token', res.loginToken);
+            return router.replace('/');
+          }
         },
         onError: (err) => {
           console.log('err', err);
@@ -57,7 +62,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center w-3/5">
       <DataForm
         forms={[
           {
@@ -89,6 +94,7 @@ const RegisterForm = () => {
           },
         ]}
         register={register}
+        getValues={getValues}
         errors={errors}
         setValue={setValue}
       />

@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }) {
             {/* </ProtectedRoutes> */}
           </Layout>
         </AuthProvider>
-        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+        {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
       </QueryClientProvider>
     </ErrorBoundary>
   );

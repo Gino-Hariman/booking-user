@@ -7,19 +7,9 @@ import axios from 'axios';
 
 export const getServerSideProps = async ({ req, query }) => {
   const token = req.cookies.token;
-  const nim = req.cookies.nim;
-
-  if (!Boolean(nim)) {
-    return {
-      redirect: {
-        destination: '/auth/register',
-        permanent: false,
-      },
-    };
-  }
 
   const data = await axios
-    .get(`${process.env.NEXT_PUBLIC_MAIN_HOST}/book/history?nim=${nim}`, {
+    .get(`${process.env.NEXT_PUBLIC_MAIN_HOST}/book/history`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((res) => res.data)
@@ -31,8 +21,6 @@ export const getServerSideProps = async ({ req, query }) => {
 };
 
 const History = ({ data }) => {
-  console.log('data', data);
-
   if (!Boolean(data.length))
     return (
       <EmptyStatePage
