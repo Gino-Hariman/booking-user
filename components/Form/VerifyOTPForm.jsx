@@ -8,6 +8,7 @@ const VerifyOTPForm = ({ token, emailTitle }) => {
   const [inputData, setInputData] = useState('');
   const { login } = useAuth();
   const handleVerifyOTP = () => {
+    console.log('inputData', inputData);
     login(
       {
         otp: inputData,
@@ -23,7 +24,7 @@ const VerifyOTPForm = ({ token, emailTitle }) => {
         Enter the verification code that send to <br /> {emailTitle}
       </p>
 
-      <OTPInput isNumberInput autoFocus length={6} onChangeOTP={setInputData} />
+      <OTPInput isNumberInput length={6} onChangeOTP={setInputData} />
 
       <div className="mt-8 mb-6">
         <Button

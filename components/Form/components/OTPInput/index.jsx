@@ -1,7 +1,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import SingleOTPInput from './SingleOTPInput';
 
-const OTP = ({ length, autoFocus, disabled, onChangeOTP, isNumberInput }) => {
+const OTP = ({ length, disabled, onChangeOTP, isNumberInput }) => {
   const [activeInput, setActiveInput] = useState(0);
   const [otpValues, setOTPValues] = useState(Array(length).fill(''));
 
@@ -141,6 +141,7 @@ const OTP = ({ length, autoFocus, disabled, onChangeOTP, isNumberInput }) => {
           }
         });
         setOTPValues(updatedOTPValues);
+        handleOtpChange(updatedOTPValues);
         setActiveInput(Math.min(nextFocusIndex + 1, length - 1));
       }
     },
@@ -153,13 +154,13 @@ const OTP = ({ length, autoFocus, disabled, onChangeOTP, isNumberInput }) => {
         .fill('')
         .map((_, index) => (
           <SingleOTPInput
-            maxlength="1"
+            maxlength={1}
             size="1"
-            key={`SingleInput-${index}`}
+            key={index}
             type={'text'}
             focus={activeInput === index}
             value={otpValues && otpValues[index]}
-            autoFocus={autoFocus}
+            autoFocus
             onFocus={handleOnFocus(index)}
             onChange={handleOnChange}
             onKeyDown={handleOnKeyDown}
