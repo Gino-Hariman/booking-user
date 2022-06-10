@@ -4,13 +4,12 @@ import { useRouter } from 'next/router';
 
 const DualLayout = ({ children }) => {
   const router = useRouter();
-  console.log('router 12', router.query);
   return (
     <div className="h-screen relative">
       <Navbar />
       <div className="w-full m-auto max-w-[90%] px-8 pt-nav flex flex-col  h-full bg-success-BG">
         <div className="my-[32px]">
-          <Breadcrumbs />
+          <Breadcrumbs option={router.query.spot_name} />
         </div>
         <div className="flex justify-center items-center gap-16">
           <div className="space-y-8 hidden lg:inline-block w-6/12">

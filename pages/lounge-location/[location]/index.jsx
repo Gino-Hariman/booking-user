@@ -33,7 +33,6 @@ const STEPS = [
 const Location = () => {
   const router = useRouter();
   const { notify } = useToast();
-  // sementara pakai state err karena requestnya looping
   const [errMsg, setErrMsg] = useState(null);
   const [currStep, setCurrStep] = useState(0);
   const [values, setValues] = useState(() => {
@@ -56,45 +55,22 @@ const Location = () => {
       return setCurrStep((curr) => curr + 1);
     }
 
-    // mutation.mutate(data, {
-    //   onSuccess: (res) => console.log('res', res),
-    //   onError: (err) => console.log('err', err),
-    // });
-
-    values.time.forEach((item) => {
-      const data = {
-        id_location: router.query.id_location,
-        date: values.date,
-        id_time: item,
-        nim: Cookies.get('nim'),
-      };
-      mutation.mutate(data, {
-        onSuccess: (res) => {
-          console.log('res88', res);
-          console.log('res.err88', res.err);
-          if (res.type === 'error') return notify('error', res.message);
-          notify('success', 'Successfully booked the seat');
-          router.replace('/booking/processing');
-        },
-        onError: (err) => notify('error', 'Sorry, Something went wrong!'),
-      });
+    const data = {
+      id_location: router.query.id_location,
+      date: values.date,
+      id_time: values.time,
+      nim: Cookies.get('nim'),
+    };
+    mutation.mutate(data, {
+      onSuccess: (res) => {
+        console.log('res88', res);
+        console.log('res.err88', res.err);
+        if (res.type === 'error') return notify('error', res.message);
+        notify('success', 'Successfully booked the seat');
+        router.replace('/booking/processing');
+      },
+      onError: (err) => notify('error', 'Sorry, Something went wrong!'),
     });
-
-    // return router.push('/booking/processing');
-    // do submission
-    // const data = {
-    //   id_location: router.query.id_location,
-    //   date: values.date,
-    //   start_time: values.time.start_time,
-    //   end_time: values.time.end_time,
-    //   oder_status: 'pending',
-    //   nim: Cookies.get('NIM'),
-    // };
-    // console.log('values123', data);
-    // mutation.mutate(data, {
-    //   onSuccess: (res) => console.log('res', res),
-    //   onError: (err) => console.log('err', err),
-    // });
   };
 
   return (

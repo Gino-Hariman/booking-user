@@ -12,7 +12,7 @@ const convertBreadcrumb = (string) => {
     .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
 };
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ option }) => {
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState(null);
 
@@ -55,7 +55,8 @@ const Breadcrumbs = () => {
               {i > 0 ? <div>{'/'}</div> : null}
               {checkLast(i) ? (
                 <p className="text-gray-700">
-                  {convertBreadcrumb(breadcrumb.breadcrumb)}
+                  {convertBreadcrumb(breadcrumb.breadcrumb)}{' '}
+                  {option && `- ${option}`}
                 </p>
               ) : (
                 <li key={breadcrumb.href}>

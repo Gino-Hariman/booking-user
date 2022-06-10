@@ -15,12 +15,8 @@ const TimeForm = ({ values, onChange }) => {
   );
 
   useEffect(() => {
-    if (selected.length !== 0) {
-      // const splitDate = selected[0].split(' - ');
-      onChange(selected);
-    } else {
-      onChange(null);
-    }
+    // const splitDate = selected[0].split(' - ');
+    onChange(selected);
   }, [selected]);
 
   if (isFetching) return <LoadingModal />;
@@ -28,11 +24,13 @@ const TimeForm = ({ values, onChange }) => {
   return (
     <div class="w-full grid grid-rows-6 grid-cols-time-chip grid-flow-col gap-5 ">
       {data.map((item) => {
-        const isItemSelected = selected.indexOf(item.id_time) !== -1;
+        // const isItemSelected = selected.indexOf(item.id_time) !== -1;
+
+        console.log('');
 
         return (
           <Checkbox
-            isChecked={isItemSelected}
+            isChecked={item.id_time === selected}
             isDisabled={Boolean(item.is_disabled)}
             title={item.time}
             onClick={(event) => handleSelect(event, item.id_time)}
