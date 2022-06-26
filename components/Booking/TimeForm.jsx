@@ -14,6 +14,8 @@ const TimeForm = ({ values, onChange }) => {
     `/location/time?id_location=${values.id_location}&date=${values.date}`
   );
 
+  console.log('sadf', typeof values.id_location);
+
   useEffect(() => {
     // const splitDate = selected[0].split(' - ');
     onChange(selected);
@@ -25,8 +27,6 @@ const TimeForm = ({ values, onChange }) => {
     <div class="w-full grid grid-rows-6 grid-cols-time-chip grid-flow-col gap-5 ">
       {data.map((item) => {
         // const isItemSelected = selected.indexOf(item.id_time) !== -1;
-
-        console.log('');
 
         return (
           <Checkbox

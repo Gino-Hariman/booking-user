@@ -2,11 +2,13 @@ import classNames from '@/helpers/classNames';
 import { CheckIcon } from '@heroicons/react/solid';
 
 const Checkbox = ({ title, isChecked, onClick, isDisabled }) => {
+  console.log('isDisabled', isDisabled);
   return (
     <div
       onClick={onClick}
       className={classNames(
-        isDisabled && 'disabled-checkbox',
+        isDisabled &&
+          'disabled-checkbox pointer-events-none cursor-not-allowed',
         isChecked ? 'checked-input' : 'unchecked-input',
         'flex relative items-center p-3 cursor-pointer'
       )}

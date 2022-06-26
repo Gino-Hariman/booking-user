@@ -5,8 +5,8 @@ const AuthLayout = ({ children }) => {
   return (
     <div className="relative">
       <Navbar />
-      <div className="mt-nav flex items-center relative h-[calc(100vh_-_76px)] bg-shade-BG ">
-        <div className="relative h-[calc(100%_-_56px_-_56px)] w-6/12">
+      <div className="mt-nav flex items-center relative min-h-[calc(100vh_-_76px)] bg-shade-BG ">
+        <div className="relative min-h-[calc(100%_-_56px_-_56px)] w-6/12">
           <img
             style={{ objectFit: 'cover' }}
             className="relative rounded-r-4 overflow-hidden"
