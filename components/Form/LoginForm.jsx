@@ -14,17 +14,21 @@ const LoginForm = () => {
   const {
     register,
     getValues,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm({
     resolver: yupResolver(
       Yup.object().shape({
-        email: Yup.string().required('Email Required'),
+        email: Yup.string()
+          // .trim()
+          .required('Email Required')
+          .matches('(@student.uph.edu|@uph.edu)', 'only can @student.uph.edu'),
       })
     ),
     defaultValues: {
       email: '',
     },
+    mode: 'onBlur',
   });
 
   const mutation = usePostQuery('/login');
@@ -62,7 +66,11 @@ const LoginForm = () => {
         errors={errors}
       />
       <div className="mt-12 text-center">
-        <Button title="Login" onClick={handleSubmit(onSubmit)} />
+        <Button
+          title="Login"
+          isDisabled={!isValid}
+          onClick={handleSubmit(onSubmit)}
+        />
       </div>
     </form>
   );
