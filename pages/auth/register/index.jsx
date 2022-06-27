@@ -3,7 +3,6 @@ import Content from '@/components/Container/Content';
 import RegisterForm from '@/components/Form/RegisterForm';
 import AuthLayout from '@/layout/AuthLayout';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 export const getServerSideProps = async ({ req }) => {
   const email = req.cookies.email;
