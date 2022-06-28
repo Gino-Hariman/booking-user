@@ -8,7 +8,6 @@ const VerifyOTPForm = ({ token, emailTitle }) => {
   const [inputData, setInputData] = useState('');
   const { login } = useAuth();
   const handleVerifyOTP = () => {
-    console.log('inputData', inputData);
     login(
       {
         otp: inputData,

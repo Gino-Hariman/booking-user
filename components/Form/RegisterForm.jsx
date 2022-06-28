@@ -51,13 +51,14 @@ const RegisterForm = () => {
           if (res.type === 'success') {
             notify('success', 'Register Success!');
             Cookies.set('token', res.loginToken);
+            delete instance.defaults.headers.common['Authorization'];
             instance.defaults.headers.Authorization = `Bearer ${token}`;
             return router.replace('/');
           }
         },
         onError: (err) => {
           console.log('err', err);
-          notify('error', 'Register Error!');
+          return notify('error', 'Register Error!');
         },
       }
     );
