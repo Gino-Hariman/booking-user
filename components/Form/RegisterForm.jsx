@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import usePostQuery from '@/hooks/usePostQuery';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import instance from '@/axios/instance';
 
 const RegisterForm = () => {
   const { notify } = useToast();
@@ -50,6 +51,7 @@ const RegisterForm = () => {
           if (res.type === 'success') {
             notify('success', 'Register Success!');
             Cookies.set('token', res.loginToken);
+            instance.defaults.headers.Authorization = `Bearer ${token}`;
             return router.replace('/');
           }
         },
