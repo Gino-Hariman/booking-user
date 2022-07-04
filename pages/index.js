@@ -43,14 +43,14 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-xxl-1 font-bold mb-3 text-primary-500">
+      <div className="flex w-full flex-col justify-center items-center text-center px-4">
+        <h1 className="text-lg-2 md:text-xxl-1 font-bold mb-3 text-primary-500">
           BOOK your seat
         </h1>
-        <h3 className="text-lg-3 font-medium text-primary-300">
+        <h3 className="text-md-3 md:text-lg-3 font-medium text-primary-300">
           start find your seat and learn awsome
         </h3>
-        <h3 className="text-lg-3 font-medium mb-8 text-primary-300">
+        <h3 className="text-md-3 md:text-lg-3 font-medium mb-8 text-primary-300">
           online classes at UPH Lounge
         </h3>
 

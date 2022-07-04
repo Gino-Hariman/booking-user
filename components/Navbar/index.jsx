@@ -13,7 +13,7 @@ const Navbar = () => {
     router.push('/auth/login');
   };
   return (
-    <div className="z-50 flex  justify-center items-center fixed top-0 h-nav w-full bg-shade-FG shadow-xl">
+    <div className="z-50 flex px-2 justify-center items-center fixed top-0 h-nav w-full bg-shade-FG shadow-xl">
       {router.pathname.includes('/auth') ||
       router.pathname.includes('/lounge-location') ? (
         <div className="max-w-[90%] w-full self-center ml-8">

@@ -149,7 +149,7 @@ const OTP = ({ length, disabled, onChangeOTP, isNumberInput }) => {
   );
 
   return (
-    <div>
+    <div className="flex items-center justify-center ml-2">
       {Array(length)
         .fill('')
         .map((_, index) => (

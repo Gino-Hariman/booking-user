@@ -51,7 +51,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="flex w-3/5 flex-col">
+    <form className="flex w-4/5 md:w-3/5 flex-col">
       <DataForm
         forms={[
           {

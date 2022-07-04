@@ -24,7 +24,7 @@ const TimeForm = ({ values, onChange }) => {
   if (isFetching) return <LoadingModal />;
 
   return (
-    <div class="w-full grid grid-rows-6 grid-cols-time-chip grid-flow-col gap-5 ">
+    <div class="w-full grid grid-rows-6 grid-cols-time-chip grid-flow-col gap-2 sm:gap-5 ">
       {data.map((item) => {
         // const isItemSelected = selected.indexOf(item.id_time) !== -1;
 
