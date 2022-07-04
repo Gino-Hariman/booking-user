@@ -28,7 +28,7 @@ const LoginForm = () => {
     defaultValues: {
       email: '',
     },
-    mode: 'onBlur',
+    mode: 'all',
   });
 
   const mutation = usePostQuery('/login');
